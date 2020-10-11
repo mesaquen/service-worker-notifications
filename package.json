@@ -1,0 +1,13 @@
+{
+  "name": "service-worker-notifications",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Mesaque Francisco <mesaquenf@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve -s"
+  },
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}
