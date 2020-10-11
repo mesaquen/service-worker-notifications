@@ -2,10 +2,12 @@ if ('serviceWorker' in navigator) {
   if ('Notification' in window) {
     Notification.requestPermission()
   }
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('./sw.js')
-      .catch(e => console.error(e))
+
+  window.addEventListener('load', async () => {
+    const url = new URL(window.location.href)
+    const swUrl = `${url.origin}/sw.js`
+
+    await navigator.serviceWorker.register(swUrl)
 
     const trigger = document.querySelector('#trigger')
 
@@ -17,7 +19,7 @@ if ('serviceWorker' in navigator) {
       })
     })
 
-    // Listen to sw response to notification action 
+    // Listen to sw response to notification action
     navigator.serviceWorker.addEventListener('message', e =>
       alert(`worker message: ${e.data}`)
     )
